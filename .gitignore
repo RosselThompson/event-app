@@ -1,0 +1,101 @@
+# Build results and generated .NET files
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Visual Studio and user-specific project files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# JetBrains IDEs
+.idea/
+*.sln.iml
+
+# VS Code local state
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# .NET local tools and package artifacts
+.dotnet/
+packages/
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+
+# ASP.NET Core development secrets and certificates
+secrets.json
+*.pfx
+*.p12
+*.cer
+*.key
+*.pem
+
+# Environment files (keep the documented example)
+.env
+.env.*
+!.env.example
+
+# Node, React and frontend build artifacts
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+dist/
+build/
+.vite/
+.turbo/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Frontend test and browser-test artifacts
+playwright-report/
+test-results/
+blob-report/
+
+# Docker local overrides and generated data
+docker-compose.override.yml
+docker-compose.*.local.yml
+.docker/
+docker-data/
+
+# Local database files and dumps
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.dump
+
+# Operating system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
