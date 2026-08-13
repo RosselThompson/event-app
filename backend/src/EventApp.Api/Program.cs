@@ -1,4 +1,11 @@
+using EventApp.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
+
+string connectionString =
+    builder.Configuration.GetConnectionString("PostgresDb")
+    ?? throw new InvalidOperationException(
+        "Connection string 'PostgresDb' is not configured.");
 
 // Add services to the container.
 
@@ -6,7 +13,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddHealthChecks();
+builder.Services.AddInfrastructure(connectionString);
 
 var app = builder.Build();
 
