@@ -20,3 +20,12 @@ Content-Type: application/json
   "ownerName": "Example Organization",
   "ownerLegalId": "OWNER-001"
 }
+
+###
+
+@eventId = 793fbc62-7ecc-4621-abdf-0e3c2d272e6a
+
+GET {{EventApp.Api_HostAddress}}/api/v1/events/{{eventId}}
+Accept: application/json
+
+###

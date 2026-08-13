@@ -1,11 +1,12 @@
 using EventApp.Application.Events.Commands.CreateEvent;
+using EventApp.Application.Events.Queries.GetEventById;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventApp.Api.Events;
 
 [ApiController]
 [Route("api/v1/events")]
-public sealed class EventsController(CreateEventHandler createEventHandler) : ControllerBase
+public sealed class EventsController(CreateEventHandler createEventHandler, GetEventByIdHandler getByIdHandler) : ControllerBase
 {
     [HttpPost]
     public async Task<ActionResult<CreateEventResult>> Create(
@@ -38,9 +39,11 @@ public sealed class EventsController(CreateEventHandler createEventHandler) : Co
     }
 
     [HttpGet("{eventId:guid}")]
-    public IActionResult GetById(Guid eventId)
+    public async Task<IActionResult> GetById(Guid eventId, CancellationToken cancellationToken)
     {
-        return StatusCode(
-            StatusCodes.Status501NotImplemented);
+        GetEventByIdQuery query = new(eventId);
+        GetEventByIdResult? result = await getByIdHandler.Handle(query, cancellationToken);
+
+        return result is null ? NotFound() : Ok(result);
     }
 }

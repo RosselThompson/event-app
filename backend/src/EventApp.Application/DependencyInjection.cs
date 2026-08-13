@@ -1,4 +1,5 @@
 using EventApp.Application.Events.Commands.CreateEvent;
+using EventApp.Application.Events.Queries.GetEventById;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EventApp.Application;
@@ -10,6 +11,7 @@ public static class DependencyInjection
     {
         services.AddSingleton(TimeProvider.System);
         services.AddScoped<CreateEventHandler>();
+        services.AddScoped<GetEventByIdHandler>();
 
         return services;
     }
