@@ -1,4 +1,4 @@
-﻿namespace EventApp.Application.Tests;
+namespace EventApp.Application.Tests;
 
 public class UnitTest1
 {

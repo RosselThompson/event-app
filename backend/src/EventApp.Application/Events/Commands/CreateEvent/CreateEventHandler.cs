@@ -34,6 +34,19 @@ public sealed class CreateEventHandler(
 
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return new CreateEventResult(eventItem.Id);
+        return new CreateEventResult(
+    eventItem.Id,
+    eventItem.Name,
+    eventItem.VenueAddress,
+    eventItem.VenueName,
+    eventItem.VenueCapacity,
+    eventItem.ExpectedAttendees,
+    eventItem.StartDate,
+    eventItem.EndDate,
+    eventItem.Description,
+    eventItem.OwnerName,
+    eventItem.OwnerLegalId,
+    eventItem.Status.ToString(),
+    eventItem.CreatedAt);
     }
 }

@@ -1,7 +1,6 @@
-namespace EventApp.Application.Events.Commands.CreateEvent;
+namespace EventApp.Api.Events;
 
-public sealed record CreateEventResult(
-    Guid Id,
+public sealed record CreateEventRequest(
     string Name,
     string VenueAddress,
     string VenueName,
@@ -11,7 +10,5 @@ public sealed record CreateEventResult(
     DateTimeOffset EndDate,
     string Description,
     string OwnerName,
-    string OwnerLegalId,
-    string Status,
-    DateTimeOffset CreatedAt
+    string OwnerLegalId
 );

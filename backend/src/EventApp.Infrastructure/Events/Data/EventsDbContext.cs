@@ -1,6 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using EventApp.Domain.Events.Entities;
 using EventApp.Application.Persistence;
+using EventApp.Domain.Events.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventApp.Infrastructure.Events.Data;
 

@@ -1,4 +1,4 @@
-﻿namespace EventApp.IntegrationTests;
+namespace EventApp.IntegrationTests;
 
 public class UnitTest1
 {

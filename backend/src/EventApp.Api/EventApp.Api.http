@@ -4,3 +4,19 @@ GET {{EventApp.Api_HostAddress}}/health
 Accept: text/plain
 
 ###
+
+POST {{EventApp.Api_HostAddress}}/api/v1/events
+Content-Type: application/json
+
+{
+  "name": "Tech Conference 2026",
+  "venueAddress": "123 Main Street",
+  "venueName": "Convention Center",
+  "venueCapacity": 500,
+  "expectedAttendees": 400,
+  "startDate": "2026-09-20T14:00:00Z",
+  "endDate": "2026-09-20T22:00:00Z",
+  "description": "Technology conference",
+  "ownerName": "Example Organization",
+  "ownerLegalId": "OWNER-001"
+}
