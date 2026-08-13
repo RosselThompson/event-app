@@ -1,3 +1,5 @@
+using EventApp.Application.Events;
+using EventApp.Application.Persistence;
 using EventApp.Infrastructure.Events.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,9 +11,9 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
     {
         services.AddDbContext<EventsDbContext>(options => options.UseNpgsql(connectionString));
-        services
-        .AddHealthChecks()
-        .AddDbContextCheck<EventsDbContext>(name: "events-db");
+        services.AddScoped<IEventRepository, EventRepository>();
+        services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<EventsDbContext>());
+        services.AddHealthChecks().AddDbContextCheck<EventsDbContext>(name: "events-db");
         return services;
     }
 }
