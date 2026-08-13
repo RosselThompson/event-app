@@ -1,12 +1,14 @@
+using EventApp.Application.Common;
 using EventApp.Application.Events.Commands.CreateEvent;
 using EventApp.Application.Events.Queries.GetEventById;
+using EventApp.Application.Events.Queries.GetEvents;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventApp.Api.Events;
 
 [ApiController]
 [Route("api/v1/events")]
-public sealed class EventsController(CreateEventHandler createEventHandler, GetEventByIdHandler getByIdHandler) : ControllerBase
+public sealed class EventsController(CreateEventHandler createEventHandler, GetEventByIdHandler getByIdHandler, GetEventsHandler getEventsHandler) : ControllerBase
 {
     [HttpPost]
     public async Task<ActionResult<CreateEventResult>> Create(
@@ -45,5 +47,25 @@ public sealed class EventsController(CreateEventHandler createEventHandler, GetE
         GetEventByIdResult? result = await getByIdHandler.Handle(query, cancellationToken);
 
         return result is null ? NotFound() : Ok(result);
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<PagedResult<GetEventItem>>> GetAll(
+    [FromQuery] GetEventsRequest request,
+    CancellationToken cancellationToken)
+    {
+        GetEventsQuery query = new(
+            request.Page,
+            request.PageSize,
+            request.Name,
+            request.StartDateFrom,
+            request.StartDateTo);
+
+        PagedResult<GetEventItem> result =
+            await getEventsHandler.Handle(
+                query,
+                cancellationToken);
+
+        return Ok(result);
     }
 }

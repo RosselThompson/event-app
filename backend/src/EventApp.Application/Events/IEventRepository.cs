@@ -8,5 +8,10 @@ public interface IEventRepository
     // void Update(Event eventItem);
     // void Delete(Event eventItem);
     Task<Event?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-    // Task<List<Event>> GetAllAsync();
+    Task<EventPage> GetAllAsync(int page,
+    int pageSize,
+    string? name,
+    DateTimeOffset? startDateFrom,
+    DateTimeOffset? startDateTo,
+    CancellationToken cancellationToken);
 }

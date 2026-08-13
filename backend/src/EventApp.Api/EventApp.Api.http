@@ -29,3 +29,6 @@ GET {{EventApp.Api_HostAddress}}/api/v1/events/{{eventId}}
 Accept: application/json
 
 ###
+
+GET {{EventApp.Api_HostAddress}}/api/v1/events?page=1&pageSize=10
+Accept: application/json
